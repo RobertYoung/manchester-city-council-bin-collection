@@ -5,3 +5,4 @@ CONF_ADDRESS = "address"
 
 STATE_ATTR_COLOUR = "colour"
 STATE_ATTR_NEXT_COLLECTION = "next_collection"
+STATE_ATTR_DAYS = "days"

@@ -92,6 +92,7 @@ class BinSensor(CoordinatorEntity, SensorEntity):
         return {
             STATE_ATTR_COLOUR: self._colour,
             STATE_ATTR_NEXT_COLLECTION: self._next_collection,
+            STATE_ATTR_DAYS: self._days,
         }
 
     def apply_values(self):
@@ -103,8 +104,12 @@ class BinSensor(CoordinatorEntity, SensorEntity):
       self._icon = "mdi:trash-can"
       self._state = "unknown"
 
-      next_collection = self.coordinator.data[self.idx]["next_collection"]
       now = dt_util.now()
+      next_collection = self.coordinator.data[self.idx]["next_collection"]
+      this_week_start = now.date() - timedelta(days=now.weekday())
+      this_week_end = this_week_start + timedelta(days=6)
+      next_week_start = this_week_end + timedelta(days=1)
+      next_week_end = next_week_start + timedelta(days=6)
 
       self._days = (next_collection - now.date()).days
 
@@ -112,10 +117,14 @@ class BinSensor(CoordinatorEntity, SensorEntity):
         self._state = "today"
       elif next_collection == (now + timedelta(days=1)).date():
         self._state = "tomorrow"
-      elif self._days <= 7:
+      elif next_collection >= this_week_start and next_collection <= this_week_end:
+        self._state = "this_week"
+      elif next_collection >= next_week_start and next_collection <= next_week_end:
         self._state = "next_week"
-      elif self._days > 7:
-        self._state = "following_week"
+      elif next_collection > next_week_end:
+        self._state = "future"
+      else:
+        self._state = "unknown"
 
     @property
     def name(self):

@@ -59,10 +59,8 @@ class ManchesterCouncilApi():
         "id": bin_id,
         "colour": colour,
         "next_collection": datetime.date(year, month, day),
-        # "next_collection": f"{day}/{month}/{year}",
       })
 
-    print(bins)
     return bins
 
 
