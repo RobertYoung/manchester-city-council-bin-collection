@@ -7,7 +7,7 @@ import async_timeout
 import voluptuous as vol
 
 from .manchester_council_api import ManchesterCouncilApi
-from .const import DOMAIN, CONF_ADDRESS, CONF_POSTCODE, STATE_ATTR_COLOUR, STATE_ATTR_DAYS, STATE_ATTR_NEXT_COLLECTION
+from .const import DEVICE_CLASS, DOMAIN, CONF_ADDRESS, CONF_POSTCODE, STATE_ATTR_COLOUR, STATE_ATTR_DAYS, STATE_ATTR_NEXT_COLLECTION
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.components.sensor import PLATFORM_SCHEMA, SensorEntity
 from homeassistant.helpers.entity import Entity
@@ -73,6 +73,8 @@ class HouseholdBinCoordinator(DataUpdateCoordinator):
 
 class BinSensor(CoordinatorEntity, SensorEntity):
     """Representation of a bin sensor."""
+
+    device_class = DEVICE_CLASS
 
     def __init__(self, coordinator, idx):
         """Pass coordinator to CoordinatorEntity."""

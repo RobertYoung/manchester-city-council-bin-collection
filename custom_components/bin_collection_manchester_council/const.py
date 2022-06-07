@@ -1,4 +1,5 @@
 DOMAIN = "bin_collection_manchester_council"
+DEVICE_CLASS = "bin_collection_schedule"
 
 CONF_POSTCODE = "postcode"
 CONF_ADDRESS = "address"
