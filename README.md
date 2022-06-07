@@ -4,12 +4,12 @@ This [Home Assistant](https://www.home-assistant.io/) component will scrape the 
 
 For example:
 
-| Entity                  | State            | Attributes                                                                                                                                                                |
-| ----------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `sensor.black_grey_bin` | `today`          | **colour:** black / grey</br>**next_collection:** 2022-06-09</br>**days:** 0</br>**icon:** mdi:delete</br>**friendly_name:** Black / Grey bin</br>**icon_color:** #5a5858 |
-| `sensor.blue_bin`       | `tomorrow`       | **colour:** blue</br>**next_collection:** 2022-06-10</br>**days:** 1</br>**icon:** mdi:delete</br>**friendly_name:** Blue bin</br>**icon_color:** #3880de                 |
-| `sensor.brown_bin`      | `next_week`      | **colour:** brown</br>**next_collection:** 2022-06-17</br>**days:** 8</br>**icon:** mdi:delete</br>**friendly_name:** Brown bin</br>**icon_color:** #5e3838               |
-| `sensor.green_bin`      | `following_wwek` | **colour:** green</br>**next_collection:** 2022-06-24</br>**days:** 15</br>**icon:** mdi:delete</br>**friendly_name:** Green bin</br>**icon_color:** #158f15              |
+| Entity                  | State       | Attributes                                                                                                                                                                |
+| ----------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sensor.black_grey_bin` | `today`     | **colour:** black / grey</br>**next_collection:** 2022-06-09</br>**days:** 0</br>**icon:** mdi:delete</br>**friendly_name:** Black / Grey bin</br>**icon_color:** #5a5858 |
+| `sensor.blue_bin`       | `tomorrow`  | **colour:** blue</br>**next_collection:** 2022-06-10</br>**days:** 1</br>**icon:** mdi:delete</br>**friendly_name:** Blue bin</br>**icon_color:** #3880de                 |
+| `sensor.brown_bin`      | `this_week` | **colour:** brown</br>**next_collection:** 2022-06-11</br>**days:** 8</br>**icon:** mdi:delete</br>**friendly_name:** Brown bin</br>**icon_color:** #5e3838               |
+| `sensor.green_bin`      | `next_week` | **colour:** green</br>**next_collection:** 2022-06-17</br>**days:** 15</br>**icon:** mdi:delete</br>**friendly_name:** Green bin</br>**icon_color:** #158f15              |
 
 
 # Installation
@@ -22,8 +22,8 @@ Add the following to your `configuration.yaml`
 
 ```
 bin_collection_manchester_council:
-  postcode: m14hj
-  address: 2 New York Street
+  postcode: m201aa
+  address: 43 Mauldeth Road West
 ```
 
 If you want to change the icon colours of the bins, you will need the [custom-ui](https://github.com/Mariusthvdb/custom-ui) plugin.
