@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "codeowners": [
+    "@robertyoung"
+  ],
+  "config_flow": false,
+  "dependencies": [],
+  "domain": "bin_collection_manchester_council",
+  "name": "Bin Collection Manchester Council",
+  "requirements": [
+    "beautifulsoup4"
+  ]
+}
