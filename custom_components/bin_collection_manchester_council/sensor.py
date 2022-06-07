@@ -5,10 +5,10 @@ from datetime import date, timedelta
 import logging
 import async_timeout
 import voluptuous as vol
-from config.custom_components.bin_collection_manchester_council.manchester_council_api import ManchesterCouncilApi
 
+from .manchester_council_api import ManchesterCouncilApi
+from .const import DOMAIN, CONF_ADDRESS, CONF_POSTCODE, STATE_ATTR_COLOUR, STATE_ATTR_DAYS, STATE_ATTR_NEXT_COLLECTION
 from homeassistant.core import HomeAssistant, callback
-from config.custom_components.bin_collection_manchester_council.const import DOMAIN, CONF_ADDRESS, CONF_POSTCODE, STATE_ATTR_COLOUR, STATE_ATTR_NEXT_COLLECTION
 from homeassistant.components.sensor import PLATFORM_SCHEMA, SensorEntity
 from homeassistant.helpers.entity import Entity
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
