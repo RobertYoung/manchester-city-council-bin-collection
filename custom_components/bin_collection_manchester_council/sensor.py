@@ -59,7 +59,7 @@ class HouseholdBinCoordinator(DataUpdateCoordinator):
         # Name of the data. For logging purposes.
         name="My sensor",
         # Polling interval. Will only be polled if there are subscribers.
-        update_interval=timedelta(seconds=30),
+        update_interval=timedelta(hours=6),
     )
     self.api = api
 
