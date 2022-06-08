@@ -56,9 +56,7 @@ class HouseholdBinCoordinator(DataUpdateCoordinator):
     super().__init__(
         hass,
         _LOGGER,
-        # Name of the data. For logging purposes.
-        name="My sensor",
-        # Polling interval. Will only be polled if there are subscribers.
+        name="Bin Collection Manchester Council",
         update_interval=timedelta(hours=6),
     )
     self.api = api
@@ -130,7 +128,7 @@ class BinSensor(CoordinatorEntity, SensorEntity):
 
     @property
     def name(self):
-        """Return the name of the sensor."""
+        """Return the name of the bin."""
         return self._name
 
     @property
@@ -140,22 +138,22 @@ class BinSensor(CoordinatorEntity, SensorEntity):
 
     @property
     def state(self):
-        """Return the state of the sensor."""
+        """Return the state of the bin."""
         return self._state
 
     @property
     def days(self):
-        """Return the days of the sensor."""
+        """Return the remaining days until the collection."""
         return self._days
 
     @property
     def next_collection(self):
-        """Return the next collection of the sensor."""
+        """Return the next collection of the bin."""
         return self._next_collection
 
     @property
     def colour(self):
-        """Return the colour of the sensor."""
+        """Return the colour of the bin."""
         return self._colour
 
     @property
@@ -167,5 +165,4 @@ class BinSensor(CoordinatorEntity, SensorEntity):
     def unique_id(self):
         """Return a unique ID to use for this sensor."""
         return self._id
-        # return self.config.get("unique_id", None)
 

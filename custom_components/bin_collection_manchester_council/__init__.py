@@ -22,12 +22,6 @@ async def async_setup(
     hass: core.HomeAssistant, config: helpers.typing.ConfigType
 ) -> bool:
     """Set up the Bin Collection Manchester Council component from yaml configuration."""
-    # hass.data.setdefault(DOMAIN, {})
-
-    # hass.data[DOMAIN] = {
-    #   CONF_POSTCODE: config[DOMAIN][CONF_POSTCODE],
-    #   CONF_ADDRESS: config[DOMAIN][CONF_ADDRESS]
-    # }
 
     hass.async_create_task(
       discovery.async_load_platform(
