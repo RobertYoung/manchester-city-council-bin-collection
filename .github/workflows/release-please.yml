@@ -2,6 +2,7 @@
 #   push:
 #     branches:
 #       - main
+on: [push]
 name: release-please
 jobs:
   release-please:
