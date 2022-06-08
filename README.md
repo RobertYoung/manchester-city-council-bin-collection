@@ -44,9 +44,9 @@ sensor.black_grey_bin:
 
 # Automations
 
-Now that you have the bin sensors added to your Home Assistant you can start doing some cool automations.
+Now that you have the bin sensors added to your Home Assistant you can start doing some cool automations. The example below configuration can be found [here](assets/nodered/bin-automation-example.json).
 
-For this example automation, you will need to create an `input_boolean` to track when the bins have been completed:
+For this automation, you will need to create an `input_boolean` to track when the bins have been completed:
 
 ```yaml
 bins_completed:
