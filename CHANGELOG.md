@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/RobertYoung/manchester-city-council-bin-collection/compare/v1.0.0...v2.0.0) (2024-05-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* fixes fetching data from manchester council website
+
+### Bug Fixes
+
+* fixes fetching data from manchester council website ([a7475f0](https://github.com/RobertYoung/manchester-city-council-bin-collection/commit/a7475f0a1cb72e190e637dd6cb34468d7e35794f))
+
 ## 1.0.0 (2022-06-08)
 
 
