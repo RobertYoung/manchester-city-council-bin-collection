@@ -6,7 +6,7 @@ import logging
 import async_timeout
 import voluptuous as vol
 
-from .manchester_council_api import ManchesterCouncilApi
+from .manchester_council_api import ManchesterCouncilApi, ManchesterCouncilApiError
 from .const import DOMAIN, CONF_ADDRESS, CONF_POSTCODE, STATE_ATTR_COLOUR, STATE_ATTR_DAYS, STATE_ATTR_NEXT_COLLECTION
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.components.sensor import PLATFORM_SCHEMA, SensorDeviceClass, SensorEntity
@@ -18,7 +18,7 @@ from homeassistant.helpers.typing import (
     DiscoveryInfoType,
 )
 import homeassistant.helpers.config_validation as cv
-from homeassistant.helpers.update_coordinator import CoordinatorEntity, DataUpdateCoordinator
+from homeassistant.helpers.update_coordinator import CoordinatorEntity, DataUpdateCoordinator, UpdateFailed
 import homeassistant.util.dt as dt_util
 
 _LOGGER = logging.getLogger(__name__)
@@ -65,12 +65,15 @@ class HouseholdBinCoordinator(DataUpdateCoordinator):
     self.api = api
 
   async def _async_update_data(self):
-    async with async_timeout.timeout(10):
-      data = await self.hass.async_add_executor_job(
-          self.api.fetch_data
-      )
-
-    return data
+    try:
+      async with async_timeout.timeout(10):
+        return await self.hass.async_add_executor_job(
+            self.api.fetch_data
+        )
+    except ManchesterCouncilApiError as err:
+      raise UpdateFailed(str(err)) from err
+    except Exception as err:
+      raise UpdateFailed(f"unexpected error fetching bin data: {err}") from err
 
 class BinSensor(CoordinatorEntity, SensorEntity):
     """Representation of a bin sensor."""

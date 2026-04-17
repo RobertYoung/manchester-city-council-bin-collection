@@ -15,6 +15,10 @@ HEADERS = {
 TIMEOUT = 5
 
 
+class ManchesterCouncilApiError(Exception):
+    """Raised when the Manchester council API cannot be read end-to-end."""
+
+
 class ManchesterCouncilApi:
     def __init__(self, postcode, address) -> None:
         self._postcode = postcode
@@ -26,9 +30,20 @@ class ManchesterCouncilApi:
 
     def fetch_data(self):
         self.authorization = self.fetch_authorisation()
+        if self.authorization is None:
+            raise ManchesterCouncilApiError("failed to fetch authorization")
+
         self.address_id = self.fetch_address_id()
+        if self.address_id is None:
+            raise ManchesterCouncilApiError("failed to fetch address id")
+
         self.uprn = self.fetch_uprn()
+        if self.uprn is None:
+            raise ManchesterCouncilApiError("failed to fetch UPRN")
+
         self.bin_info = self.fetch_bin_info()
+        if self.bin_info is None:
+            raise ManchesterCouncilApiError("failed to fetch bin info")
 
         bins = []
 
