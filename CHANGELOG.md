@@ -1,12 +1,5 @@
 # Changelog
 
-## [2.0.1](https://github.com/RobertYoung/manchester-city-council-bin-collection/compare/v2.0.0...v2.0.1) (2026-04-17)
-
-
-### Bug Fixes
-
-* restore compatibility with current Home Assistant ([762fb8a](https://github.com/RobertYoung/manchester-city-council-bin-collection/commit/762fb8a618be619d59c2c7903381bec95b0c5302))
-
 ## [2.0.0](https://github.com/RobertYoung/manchester-city-council-bin-collection/compare/v1.0.0...v2.0.0) (2024-05-09)
 
 
