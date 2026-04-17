@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.3](https://github.com/RobertYoung/manchester-city-council-bin-collection/compare/v2.0.2...v2.0.3) (2026-04-17)
+
+
+### Bug Fixes
+
+* match address against the label head, handling both full-street and house-number input ([2557225](https://github.com/RobertYoung/manchester-city-council-bin-collection/commit/2557225f9dfe109d455b3f540c005a44ea7788c7))
+
 ## [2.0.2](https://github.com/RobertYoung/manchester-city-council-bin-collection/compare/v2.0.1...v2.0.2) (2026-04-17)
 
 
