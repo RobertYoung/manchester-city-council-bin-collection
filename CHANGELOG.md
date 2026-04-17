@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/RobertYoung/manchester-city-council-bin-collection/compare/v2.0.1...v2.0.2) (2026-04-17)
+
+
+### Bug Fixes
+
+* fail fast on partial API failures and surface as UpdateFailed ([7b10401](https://github.com/RobertYoung/manchester-city-council-bin-collection/commit/7b10401990475a4a82ed5e726434c6d39a94268f))
+
 ## [2.0.1](https://github.com/RobertYoung/manchester-city-council-bin-collection/compare/v2.0.0...v2.0.1) (2026-04-17)
 
 
