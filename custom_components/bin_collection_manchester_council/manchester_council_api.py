@@ -46,8 +46,6 @@ class ManchesterCouncilApi:
             timeout=TIMEOUT,
         )
 
-        authorization = resp.headers["authorization"]
-
         if resp.status_code != HTTPStatus.OK:
             _LOGGER.error(
                 "Unable to fetch authorization key : %s",
@@ -55,7 +53,7 @@ class ManchesterCouncilApi:
             )
             return
 
-        return authorization
+        return resp.headers.get("authorization")
 
     def fetch_address_id(self):
         prop_search_resp = {
@@ -89,8 +87,9 @@ class ManchesterCouncilApi:
 
         address_id = None
 
+        prefix = f"{self._address.upper()} "
         for address in prop_search_obj["data"]["prop_search_results"]:
-            if address["label"].startswith(self._address.upper()):
+            if address["label"].startswith(prefix):
                 address_id = address["value"]
                 break
 
@@ -123,6 +122,13 @@ class ManchesterCouncilApi:
             timeout=TIMEOUT,
         )
 
+        if retreive_property_resp.status_code != HTTPStatus.OK:
+            _LOGGER.error(
+                "Unable to fetch UPRN from manchester council api : %s",
+                retreive_property_resp.status_code,
+            )
+            return
+
         return json.loads(retreive_property_resp.text)["data"]["UPRN"]
 
     def fetch_bin_info(self):
@@ -151,6 +157,13 @@ class ManchesterCouncilApi:
             },
             timeout=TIMEOUT,
         )
+
+        if bin_info_resp.status_code != HTTPStatus.OK:
+            _LOGGER.error(
+                "Unable to fetch bin info from manchester council api : %s",
+                bin_info_resp.status_code,
+            )
+            return
 
         bin_info_obj = json.loads(bin_info_resp.text)
 
