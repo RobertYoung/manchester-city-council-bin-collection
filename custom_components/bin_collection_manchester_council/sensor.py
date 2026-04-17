@@ -10,6 +10,7 @@ from .manchester_council_api import ManchesterCouncilApi
 from .const import DEVICE_CLASS, DOMAIN, CONF_ADDRESS, CONF_POSTCODE, STATE_ATTR_COLOUR, STATE_ATTR_DAYS, STATE_ATTR_NEXT_COLLECTION
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.components.sensor import PLATFORM_SCHEMA, SensorEntity
+from homeassistant.exceptions import PlatformNotReady
 from homeassistant.helpers.entity import Entity
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import (
@@ -42,7 +43,9 @@ async def async_setup_platform(
     api = ManchesterCouncilApi(discovery_info.get(CONF_POSTCODE), discovery_info.get(CONF_ADDRESS))
     coordinator = HouseholdBinCoordinator(hass, api)
 
-    await coordinator.async_config_entry_first_refresh()
+    await coordinator.async_refresh()
+    if not coordinator.last_update_success:
+      raise PlatformNotReady from coordinator.last_exception
 
     async_add_entities(
       BinSensor(coordinator, idx) for idx, ent in enumerate(coordinator.data)

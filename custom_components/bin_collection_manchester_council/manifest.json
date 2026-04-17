@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "codeowners": [
     "@robertyoung"
   ],
@@ -7,7 +7,5 @@
   "dependencies": [],
   "domain": "bin_collection_manchester_council",
   "name": "Bin Collection Manchester Council",
-  "requirements": [
-    "beautifulsoup4"
-  ]
+  "requirements": []
 }

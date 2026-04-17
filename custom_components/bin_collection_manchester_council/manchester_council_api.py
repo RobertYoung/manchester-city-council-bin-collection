@@ -3,7 +3,6 @@ from http import HTTPStatus
 import json
 import logging
 
-from dateutil.relativedelta import relativedelta
 import requests
 
 from .const import REQUEST_USER_AGENT
@@ -128,7 +127,7 @@ class ManchesterCouncilApi:
 
     def fetch_bin_info(self):
         today = datetime.datetime.today()
-        future = today + relativedelta(months=1)
+        future = today + datetime.timedelta(days=31)
         bin_info_data = {
             "name": "sr_bin_coll_day_checker",
             "data": {
