@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.0.1](https://github.com/RobertYoung/manchester-city-council-bin-collection/compare/v2.0.0...v2.0.1) (2026-04-17)
+
+
+### Bug Fixes
+
+* restore compatibility with current Home Assistant ([762fb8a](https://github.com/RobertYoung/manchester-city-council-bin-collection/commit/762fb8a618be619d59c2c7903381bec95b0c5302))
+* tighten address match and check API status codes ([f7a934a](https://github.com/RobertYoung/manchester-city-council-bin-collection/commit/f7a934a536378bb8ef34515cffb6aac79efc51b4))
+* translate bin state via translation_key and ENUM device class ([f162c21](https://github.com/RobertYoung/manchester-city-council-bin-collection/commit/f162c210013fc6ad1700f2010226ad13ba9e4639))
+
 ## [2.0.0](https://github.com/RobertYoung/manchester-city-council-bin-collection/compare/v1.0.0...v2.0.0) (2024-05-09)
 
 
