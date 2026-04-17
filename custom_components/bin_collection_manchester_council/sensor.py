@@ -7,9 +7,9 @@ import async_timeout
 import voluptuous as vol
 
 from .manchester_council_api import ManchesterCouncilApi
-from .const import DEVICE_CLASS, DOMAIN, CONF_ADDRESS, CONF_POSTCODE, STATE_ATTR_COLOUR, STATE_ATTR_DAYS, STATE_ATTR_NEXT_COLLECTION
+from .const import DOMAIN, CONF_ADDRESS, CONF_POSTCODE, STATE_ATTR_COLOUR, STATE_ATTR_DAYS, STATE_ATTR_NEXT_COLLECTION
 from homeassistant.core import HomeAssistant, callback
-from homeassistant.components.sensor import PLATFORM_SCHEMA, SensorEntity
+from homeassistant.components.sensor import PLATFORM_SCHEMA, SensorDeviceClass, SensorEntity
 from homeassistant.exceptions import PlatformNotReady
 from homeassistant.helpers.entity import Entity
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -75,7 +75,9 @@ class HouseholdBinCoordinator(DataUpdateCoordinator):
 class BinSensor(CoordinatorEntity, SensorEntity):
     """Representation of a bin sensor."""
 
-    device_class = DEVICE_CLASS
+    _attr_device_class = SensorDeviceClass.ENUM
+    _attr_options = ["today", "tomorrow", "this_week", "next_week", "future"]
+    _attr_translation_key = "bin_collection_schedule"
 
     def __init__(self, coordinator, idx):
         """Pass coordinator to CoordinatorEntity."""
@@ -105,7 +107,7 @@ class BinSensor(CoordinatorEntity, SensorEntity):
       self._next_collection = self.coordinator.data[self.idx]["next_collection"].isoformat()
       self._hidden = False
       self._icon = "mdi:trash-can"
-      self._state = "unknown"
+      self._state = None
 
       now = dt_util.now()
       next_collection = self.coordinator.data[self.idx]["next_collection"]
@@ -127,7 +129,7 @@ class BinSensor(CoordinatorEntity, SensorEntity):
       elif next_collection > next_week_end:
         self._state = "future"
       else:
-        self._state = "unknown"
+        self._state = None
 
     @property
     def name(self):

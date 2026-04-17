@@ -1,0 +1,15 @@
+{
+  "entity": {
+    "sensor": {
+      "bin_collection_schedule": {
+        "state": {
+          "today": "Today",
+          "tomorrow": "Tomorrow",
+          "this_week": "This week",
+          "next_week": "Next week",
+          "future": "Future"
+        }
+      }
+    }
+  }
+}
