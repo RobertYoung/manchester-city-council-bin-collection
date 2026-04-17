@@ -1,0 +1,14 @@
+{
+  "release-type": "python",
+  "packages": {
+    ".": {
+      "extra-files": [
+        {
+          "type": "json",
+          "path": "custom_components/bin_collection_manchester_council/manifest.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    }
+  }
+}
