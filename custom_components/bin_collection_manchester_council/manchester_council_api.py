@@ -102,9 +102,10 @@ class ManchesterCouncilApi:
 
         address_id = None
 
-        prefix = f"{self._address.upper()} "
+        needle = self._address.upper().strip()
         for address in prop_search_obj["data"]["prop_search_results"]:
-            if address["label"].startswith(prefix):
+            label_head = address["label"].split(",", 1)[0].strip()
+            if label_head == needle or label_head.startswith(f"{needle} "):
                 address_id = address["value"]
                 break
 
